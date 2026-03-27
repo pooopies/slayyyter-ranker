@@ -12,6 +12,10 @@
     padding: 0;
 }
 
+html {
+    font-size: 80%; /* Shrinks all rem-based units by 20% to globally simulate browser outscale */
+}
+
 body {
     /* Montserrat is a great match for the bold italic sans-serif font */
     font-family: 'Montserrat', sans-serif;
@@ -28,7 +32,7 @@ body {
 
 #app {
     width: 100%;
-    max-width: 900px;
+    max-width: 56.25rem;
     padding: 2rem;
     position: relative;
 }
@@ -45,23 +49,21 @@ body {
     display: flex;
 }
 
-.title-main {
-    color: var(--red-accent);
-    font-size: 5.5rem;
+.album-header {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    color: #000;
+    text-shadow: none;
+    margin-bottom: 2rem;
     font-weight: 900;
     font-style: italic;
-    line-height: 0.9;
-    letter-spacing: -2px;
-    margin-bottom: 2rem;
     text-transform: uppercase;
-    text-shadow: 2px 2px 0px #fff;
 }
 
-.title-main .black-accent {
-    color: #000;
-    font-size: 3.5rem;
-    display: block;
-    margin-top: 10px;
+.album-header .author {
+    font-size: 2.2rem;
+    color: var(--red-accent);
 }
 
 h2 {
@@ -126,7 +128,7 @@ p {
 .progress-container {
     width: 100%;
     margin-bottom: 2rem;
-    max-width: 600px;
+    max-width: 37.5rem;
 }
 
 .progress-bar-wrap {
@@ -175,8 +177,8 @@ p {
     font-style: italic;
     color: #fff;
     background: var(--red-accent);
-    width: 80px;
-    height: 80px;
+    width: 5rem;
+    height: 5rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -239,7 +241,7 @@ p {
 /* Leaderboard */
 .leaderboard {
     width: 100%;
-    max-width: 800px;
+    max-width: 50rem;
     margin: 0 auto;
     background: #fff;
     border: 4px solid #000;
@@ -280,7 +282,7 @@ p {
     font-weight: 900;
     font-style: italic;
     color: var(--red-accent);
-    width: 50px;
+    width: 3.5rem;
     text-align: left;
 }
 
@@ -328,28 +330,29 @@ p {
 
 /* Responsive */
 @media (max-width: 768px) {
+    .album-header {
+        font-size: 2.4rem;
+        margin-bottom: 1.5rem;
+    }
+    .album-header .author {
+        font-size: 1.6rem;
+    }
     .cards-container {
         flex-direction: column;
         min-height: auto;
     }
     .song-card {
-        padding: 3rem 1.5rem;
-        box-shadow: -8px 8px 0px #000;
+        padding: 2.5rem 1rem;
+        box-shadow: -6px 6px 0px #000;
     }
     .song-card:hover {
         transform: translate(2px, -2px);
-        box-shadow: -10px 10px 0px #000;
+        box-shadow: -8px 8px 0px #000;
     }
     .vs-text {
-        width: 60px;
-        height: 60px;
+        width: 4rem;
+        height: 4rem;
         font-size: 1.6rem;
-    }
-    .title-main {
-        font-size: 4rem;
-    }
-    .title-main .black-accent {
-        font-size: 2.5rem;
     }
     .song-title {
         font-size: 2rem;
@@ -366,7 +369,7 @@ p {
         border-width: 2px;
     }
     .rank-song { font-size: 1rem; }
-    .rank-number { font-size: 1.4rem; width: 45px; }
+    .rank-number { font-size: 1.4rem; width: 3rem; }
     #capture-area { padding: 1rem 0; margin-bottom: 1.5rem; }
     h2 { font-size: 2.2rem; margin-bottom: 1.5rem; }
     
