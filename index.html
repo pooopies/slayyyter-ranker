@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WGIA RANKER</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%23e51923' stroke-width='6'/%3E%3Ctext x='32' y='46' font-family='Arial, sans-serif' font-weight='900' font-style='italic' font-size='40' fill='%23e51923' text-anchor='middle'%3E$%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- Start Screen -->
+        <div id="start-screen" class="screen active">
+            <h1 class="title-main" style="font-size: 3.5rem; line-height: 1.1; letter-spacing: -1px; padding: 0 1rem; color: #000; text-shadow: none;">WOR$T GIRL IN AMERICA<br><span style="font-size: 2.2rem; color: var(--red-accent);">BY $LAYYYTER</span><br>TRACKLIST RANKER</h1>
+            <p>COMPARE THE TRACKS. CHOOSE YOUR FAVORITE.</p>
+            <div style="display:flex; gap:1.5rem; flex-wrap:wrap; justify-content:center;">
+                <button id="start-btn" class="theme-btn">START BATTLE</button>
+                <a href="https://slayyyter.lnk.to/WGIA" target="_blank" class="theme-btn secondary" style="text-decoration:none; display:flex; align-items:center;">LISTEN</a>
+            </div>
+        </div>
+
+        <!-- Battle Screen -->
+        <div id="battle-screen" class="screen">
+            <div class="progress-container">
+                <div class="progress-bar-wrap">
+                    <div id="progress-bar" class="progress-bar"></div>
+                </div>
+                <div class="progress-text">Battle <span id="current-step">1</span> / ~<span id="total-steps">43</span></div>
+            </div>
+            <h2>WHICH IS BETTER?</h2>
+            <div class="cards-container">
+                <button id="card-left" class="song-card animate-left">
+                    <span class="song-title">Song A</span>
+                </button>
+                <div class="vs-text">VS</div>
+                <button id="card-right" class="song-card animate-right">
+                    <span class="song-title">Song B</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="results-screen" class="screen">
+            <div id="capture-area">
+                <h2 style="font-size: 3.5rem; line-height: 1.1; letter-spacing: -1px; color: #000; text-shadow: none; margin-bottom: 2rem;">WOR$T GIRL IN AMERICA<br><span style="font-size: 2.2rem; color: var(--red-accent);">BY $LAYYYTER</span><br>FINAL RANKING</h2>
+                <div id="leaderboard" class="leaderboard"></div>
+            </div>
+            <div class="results-actions">
+                <button id="share-img-btn" class="theme-btn">COPY AS IMAGE</button>
+                <button id="share-text-btn" class="theme-btn secondary">COPY AS TEXT</button>
+                <button id="restart-btn" class="theme-btn" style="background:#000; color:#fff;">START OVER</button>
+                <a href="https://slayyyter.lnk.to/WGIA" target="_blank" class="theme-btn secondary" style="text-decoration:none; display:flex; align-items:center; justify-content:center;">LISTEN</a>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

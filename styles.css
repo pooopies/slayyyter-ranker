@@ -1,0 +1,378 @@
+:root {
+    --bg-color: #719eb7; /* Cool blue from the album cover wall */
+    --text-color: #000000;
+    --red-accent: #e51923; /* $LAYYYTER Red from the typography */
+    --card-bg: #ffffff;
+    --card-text: #000000;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* Montserrat is a great match for the bold italic sans-serif font */
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    /* Subtle noise texture */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+}
+
+#app {
+    width: 100%;
+    max-width: 900px;
+    padding: 2rem;
+    position: relative;
+}
+
+.screen {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    animation: fadeIn 0.4s ease;
+}
+
+.screen.active {
+    display: flex;
+}
+
+.title-main {
+    color: var(--red-accent);
+    font-size: 5.5rem;
+    font-weight: 900;
+    font-style: italic;
+    line-height: 0.9;
+    letter-spacing: -2px;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0px #fff;
+}
+
+.title-main .black-accent {
+    color: #000;
+    font-size: 3.5rem;
+    display: block;
+    margin-top: 10px;
+}
+
+h2 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: #000;
+}
+
+p {
+    font-size: 1.4rem;
+    font-weight: 900;
+    font-style: italic;
+    margin-bottom: 3rem;
+    color: #000;
+    letter-spacing: 1px;
+}
+
+/* Theme Button (Brutalist style) */
+.theme-btn {
+    background: #fff;
+    color: #000;
+    border: 4px solid #000;
+    padding: 1.2rem 3rem;
+    font-size: 1.6rem;
+    font-weight: 900;
+    font-style: italic;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+    box-shadow: -6px 6px 0px #000;
+    font-family: inherit;
+    letter-spacing: 1px;
+}
+
+.theme-btn:hover {
+    background: var(--red-accent);
+    color: #fff;
+    transform: translate(2px, -2px);
+    box-shadow: -8px 8px 0px #000;
+}
+
+.theme-btn:active {
+    transform: translate(-4px, 4px);
+    box-shadow: -2px 2px 0px #000;
+}
+
+.theme-btn.secondary {
+    background: #000;
+    color: #fff;
+}
+
+.theme-btn.secondary:hover {
+    background: #000;
+    color: var(--red-accent);
+}
+
+/* Progress Bar */
+.progress-container {
+    width: 100%;
+    margin-bottom: 2rem;
+    max-width: 600px;
+}
+
+.progress-bar-wrap {
+    width: 100%;
+    height: 16px;
+    background: #fff;
+    border: 4px solid #000;
+    margin-bottom: 0.8rem;
+    box-shadow: -4px 4px 0px #000;
+}
+
+.progress-bar {
+    height: 100%;
+    background: var(--red-accent);
+    width: 0%;
+    transition: width 0.4s cubic-bezier(0.1, 0.7, 0.1, 1);
+}
+
+.progress-text {
+    font-size: 1.2rem;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 900;
+    font-style: italic;
+}
+
+/* Battle Cards */
+.cards-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 100%;
+    gap: 2rem;
+    position: relative;
+    min-height: 300px;
+}
+
+.vs-text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.2rem;
+    font-weight: 900;
+    font-style: italic;
+    color: #fff;
+    background: var(--red-accent);
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    z-index: 10;
+    border: 4px solid #000;
+    box-shadow: -4px 4px 0px #000;
+}
+
+.song-card {
+    flex: 1;
+    background: var(--card-bg);
+    border: 4px solid #000;
+    padding: 3rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    color: var(--card-text);
+    font-family: inherit;
+    position: relative;
+    box-shadow: -10px 10px 0px #000;
+}
+
+.song-card:hover {
+    background: var(--red-accent);
+    color: #fff;
+    transform: translate(4px, -4px);
+    box-shadow: -14px 14px 0px #000;
+}
+
+.song-card:active {
+    transform: translate(-4px, 4px);
+    box-shadow: -6px 6px 0px #000;
+}
+
+.song-title {
+    font-size: 2.8rem;
+    font-weight: 900;
+    font-style: italic;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    z-index: 2;
+    pointer-events: none;
+    text-transform: uppercase;
+}
+
+/* Capture Area */
+#capture-area {
+    padding: 1.5rem;
+    background: var(--bg-color);
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Leaderboard */
+.leaderboard {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    border: 4px solid #000;
+    padding: 1rem;
+    box-shadow: -8px 8px 0px #000;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+}
+
+.rank-row {
+    display: flex;
+    align-items: center;
+    padding: 0.6rem;
+    background: #f4f4f4;
+    border: 3px solid #000;
+    transition: all 0.2s ease;
+}
+
+.rank-row:hover {
+    background: var(--red-accent);
+    color: #fff;
+    transform: translate(2px, -2px);
+    box-shadow: -4px 4px 0px #000;
+}
+
+.rank-row:hover .rank-number {
+    color: #fff;
+}
+
+.rank-row:nth-child(1) { background: #000; color: #fff; }
+.rank-row:nth-child(1) .rank-number { color: var(--red-accent); }
+.rank-row:nth-child(1):hover { background: var(--red-accent); }
+.rank-row:nth-child(1):hover .rank-number { color: #fff; }
+
+.rank-number {
+    font-size: 1.6rem;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--red-accent);
+    width: 50px;
+    text-align: left;
+}
+
+.rank-song {
+    font-size: 1.1rem;
+    font-weight: 900;
+    font-style: italic;
+    flex: 1;
+    text-align: left;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+}
+
+.results-actions {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+    0% { opacity: 0; transform: translateX(-40px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    0% { opacity: 0; transform: translateX(40px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+.animate-left {
+    animation: slideInLeft 0.3s cubic-bezier(0.1, 0.7, 0.1, 1) forwards;
+}
+
+.animate-right {
+    animation: slideInRight 0.3s cubic-bezier(0.1, 0.7, 0.1, 1) forwards;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .cards-container {
+        flex-direction: column;
+        min-height: auto;
+    }
+    .song-card {
+        padding: 3rem 1.5rem;
+        box-shadow: -8px 8px 0px #000;
+    }
+    .song-card:hover {
+        transform: translate(2px, -2px);
+        box-shadow: -10px 10px 0px #000;
+    }
+    .vs-text {
+        width: 60px;
+        height: 60px;
+        font-size: 1.6rem;
+    }
+    .title-main {
+        font-size: 4rem;
+    }
+    .title-main .black-accent {
+        font-size: 2.5rem;
+    }
+    .song-title {
+        font-size: 2rem;
+    }
+    
+    .leaderboard {
+        grid-template-columns: 1fr;
+        gap: 0.4rem;
+        padding: 0.6rem;
+        box-shadow: -6px 6px 0px #000;
+    }
+    .rank-row {
+        padding: 0.5rem;
+        border-width: 2px;
+    }
+    .rank-song { font-size: 1rem; }
+    .rank-number { font-size: 1.4rem; width: 45px; }
+    #capture-area { padding: 1rem 0; margin-bottom: 1.5rem; }
+    h2 { font-size: 2.2rem; margin-bottom: 1.5rem; }
+    
+    .theme-btn {
+        width: 100%;
+        font-size: 1.4rem;
+        padding: 1rem;
+    }
+}
